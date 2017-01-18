@@ -4,7 +4,7 @@ public void setup()
   println("there are " + lines.length + " lines");
   for (int i=0; i < lines.length; i++) 
   {
-    if(palindrome(lines[i])==true)
+    if(palindrome(noCapitals(noSpaces(noPunct(reverse(lines[i]))))==true)
     {
       println(lines[i] + " IS a palidrome.");
     }
@@ -16,18 +16,43 @@ public void setup()
 }
 public boolean palindrome(String word)
 {
-  String s = new String();
-  for(int i = word.length()-1; i >= 0 ; i--)
-    s = s + word.substring(i,i+1) ;
-  if (s.equals(word))
+  if (reverse(word).equals(word))
     return true;
   return false;
 }
-public String reverse(String str)
-{
-    String sNew = new String();
-    //your code here
-    return sNew;
+public String noCapitals(String sWord){
+  return sWord.toLowerCase();
 }
+public String noSpaces(String sWord){
+  String s = new String();
+  for (int i = 0; i < sWord.length(); i++)
+  {
+    if(!sWord.substring(i,i+1).equals(" "))
+      s += sWord.substring(i,i+1);
+  }
+  return s;
+}
+public String noPunct(String sWord){
+  String s = new String();
+  for (int i = 0; i < sWord.length(); i++)
+  {
+    if(!sWord.substring(i,i+1).equals(",")||!sWord.substring(i,i+1).equals("!")||!sWord.substring(i,i+1).equals("."))
+      s += sWord.substring(i,i+1);
+  }
+  return s;
+}
+
+public String reverse(String sWord){
+  String s = new String();
+  if (sWord.length()<2)
+    return sWord;
+  for(int i = sWord.length()-1; i >= 0 ; i--)
+  {
+    if(!sWord.substring(i,i+1).equals(" "))
+      s = s + sWord.substring(i,i+1) ;
+  }
+  return s;
+}
+
 
 
