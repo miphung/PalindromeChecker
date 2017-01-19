@@ -4,7 +4,7 @@ public void setup()
   println("there are " + lines.length + " lines");
   for (int i=0; i < lines.length; i++) 
   {
-    if(palindrome(noCapitals(noSpaces(noPunct(reverse(lines[i]))))==true)
+    if(palindrome(noCapitals(noSpaces(noPunct(reverse(lines[i])))))==true)
     {
       println(lines[i] + " IS a palidrome.");
     }
@@ -34,11 +34,10 @@ public String noSpaces(String sWord){
 }
 public String noPunct(String sWord){
   String s = new String();
-  for (int i = 0; i < sWord.length(); i++)
-  {
-    if(!sWord.substring(i,i+1).equals(",")||!sWord.substring(i,i+1).equals("!")||!sWord.substring(i,i+1).equals("."))
-      s += sWord.substring(i,i+1);
-  }
+  for(int i =0; i<sWord.length(); i++)
+    if(Character.isLetter(sWord.charAt(i)) == true)
+      s +=sWord.charAt(i);
+  //System.out.println(s);
   return s;
 }
 
